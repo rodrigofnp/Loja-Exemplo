@@ -1,0 +1,10 @@
+RewriteEngine On
+
+RewriteRule ^$						index.php?pagina=home [L]
+RewriteRule ^produto\-([0-9]+)$ 	product.php?pagina=produto&id=$1 [L]
+RewriteRule ^carrinho$				cart.php?pagina=carrinho [L]
+RewriteRule ^pagamento$				checkout.php?pagina=pagamento [L]
+RewriteRule ^sucesso$				confirmation.php?pagina=confirmacao&status=2 [L]
+RewriteRule ^erro\-no\-pagamento$	confirmation.php?pagina=confirmacao&status=1 [L]
+
+RedirectMatch 404 /(includes|classes|db)

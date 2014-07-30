@@ -1,0 +1,8 @@
+.git
+!.gitkeep
+*~
+.bash_history
+.bashrc
+*.log
+.Trash-1000
+*.nfs*
