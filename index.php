@@ -9,6 +9,7 @@
 	<head>
 		<meta charset='utf-8'>
 		<link rel="stylesheet" href="style.css" />
+		<link rel="shortcut icon" type="image/png" href="images/icon.png"/>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 		<title>Lojinha Gerencianet</title>

@@ -17,7 +17,7 @@ function controlAddressFields(sameAddress) {
     }
 }
 
-function correiocontrolcep(resp) {
+function fillAddress(resp, prefix) {
     if ("erro" in resp) {
         resp = {
             localidade: "",
@@ -26,36 +26,38 @@ function correiocontrolcep(resp) {
             uf: ""
         }
     }
-    document.getElementById(fieldCep + "cid").value = resp.localidade.trim();
-    document.getElementById(fieldCep + "log").value = resp.logradouro.trim();
-    document.getElementById(fieldCep + "bai").value = resp.bairro.trim();
-    document.getElementById(fieldCep + "uf").value = resp.uf;
+    document.getElementById(prefix + "cid").value = resp.localidade.trim();
+    document.getElementById(prefix + "log").value = resp.logradouro.trim();
+    document.getElementById(prefix + "bai").value = resp.bairro.trim();
+    document.getElementById(prefix + "uf").value = resp.uf;
 }
 
-function searchCEP(cep, callback) {
-    var jsonp = document.createElement("script");
-    jsonp.src = "http://cep.correiocontrol.com.br/" + cep + ".js";
-    document.getElementsByTagName("head")[0].appendChild(jsonp);
+function searchCEP(cep, prefix) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        var resp = JSON.parse(xhr.response);
+        fillAddress(resp, prefix);
+    }
+    xhr.open("get", "./actions/get-address.php?cep=" + cep);
+    xhr.send();
 }
 
 
 window.onload = function() {
 
-    function handleBlurCep(value) {
+    function handleBlurCep(value, prefix) {
         var cep = value || '';
-        searchCEP(cep.replace(/[^\d]+/, ''));
+        searchCEP(cep.replace(/[^\d]+/, ''), prefix);
     }
     document.getElementById("cob-cep").addEventListener("blur", function() {
-        fieldCep = "cob-";
-        handleBlurCep(this.value);
+
+        handleBlurCep(this.value, "cob-");
     });
     document.getElementById("ent-cep").addEventListener("blur", function() {
-        fieldCep = "ent-";
-        handleBlurCep(this.value);
+        handleBlurCep(this.value, "ent-");
     });
     if (document.getElementById("ent-cep").value) {
-        fieldCep = "ent-";
-        handleBlurCep(document.getElementById("ent-cep").value);
+        handleBlurCep(document.getElementById("ent-cep").value, "ent-");
     }
 
     sameAddressChange();

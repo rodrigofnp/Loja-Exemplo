@@ -268,10 +268,7 @@ img{
 	font-weight: bold;
 }
 .informations .results-per-page {
-	padding: 0 25px;
-}
-.informations .change-pages {
-	padding-left: 20px;
+	padding: 0 20px;
 }
 .informations .small-button {
 	background-color: #FFFFFF;
