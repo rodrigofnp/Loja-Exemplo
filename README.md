@@ -32,7 +32,7 @@ Para que seu código funcione serão necessárias algumas modificações:
 
 1. Abrir uma conta Gerencianet em http://gerencianet.com.br/.
 
-2. Logue na conta Gerencianet criada e vá em **Desenvolvedor >> Checkout Transparente** e copie o código javascript que será exibido. Cole o código na linha 15 do arquivo **checkout.php**.
+2. Logue na conta Gerencianet criada e vá em **Desenvolvedor >> Checkout Transparente** e copie o código javascript que será exibido. Cole o código na linha 17 do arquivo **checkout.php**.
 
 3. Na conta Gerencianet, vá em **Desenvolvedor >> Token de Integração** e gere um token para sua conta. Copie este token e cole na linha 64 do arquivo **actions/do-checkout.php**.
 
