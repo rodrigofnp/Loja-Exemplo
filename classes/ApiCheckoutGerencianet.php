@@ -121,7 +121,7 @@ class ApiCheckoutGerencianet {
 			} else {
 				throw new Exception("Erro: formaPagamento boleto ou cartao não encontrada", $indice_erro++);
 			}
-			
+
 
 			$formaPagamento .= "</formaPagamento>";
 
@@ -145,13 +145,14 @@ class ApiCheckoutGerencianet {
 		curl_setopt($ch, CURLOPT_MAXREDIRS, 2);
 		curl_setopt($ch, CURLOPT_AUTOREFERER, true);
 		$data = array("token" => $token, "tokenPagamento" => $tokenPagamento, "dados" => $xml);
-		 
+
 		curl_setopt($ch, CURLOPT_POST, true);
-		 
+
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$response = curl_exec($ch);
-		 
+
 		curl_close($ch);
 
 		return $response;
